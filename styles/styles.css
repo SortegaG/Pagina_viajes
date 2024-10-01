@@ -1,0 +1,21 @@
+h2 {
+    text-align: center;
+    font-size: 30px;
+    text-decoration: underline;
+}
+
+#contenedor {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    justify-content: space-around;
+}
+
+#contenedor-selector {
+    text-align: center;
+}
+
+#imagen-grande {
+    display: block;
+    margin: 0 auto;
+}
