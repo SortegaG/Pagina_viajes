@@ -1,32 +1,34 @@
-// Creacion del primer div BIENVENIDOS Y FOTO PRINCIPAL
-const newSection = document.createElement('section');
-const newDiv = document.createElement('div');
+// Funciones de la web
 
-const newH2 = document.createElement('h2'); // creacion de un h2 con texto
-newH2.textContent = 'Bienvenidos';
+function crearTitulo(i) {
+    const h2 = document.createElement('h2');  // Crea un h2
+    h2.id = `titulo-${i}`  // le proporciona un id en funcion del parametro que le indiquemos a la funcion
+    document.body.appendChild(h2)  // Introduce el h2 dentro del body
+}
 
-const newImg1 = document.createElement('img'); // creacion de una img con ruta de imagen
-newImg1.src = "banner/1.jpg";
-newImg1.id = ('imagen-grande');
+function crearSection(i) {
 
-newSection.appendChild(newH2);  // Introducimos en la section un h2
-newSection.appendChild(newDiv); // Introducimos en la section un div
-newDiv.appendChild(newImg1);  // Introducimos en el div una img
+    const section = document.createElement('section');  // creamos las etiquetas section, div y img
+    const div = document.createElement('div');
+    const img = document.createElement('img');
 
-document.body.appendChild(newSection)  // Introducimos la seccion dentro del body
+    div.id = `div-${i}`; // Les damos un id en funcion del parametro que le demos a la funcion
+    img.id = `img-${i}`;
 
+    div.appendChild(img);  // Introducimos la img --> div --> section -->body
+    section.appendChild(div);
+    document.body.appendChild(section);
+}
 
-// Creacion del segundo div RECOMENDADOS Y 3 IMAGENES
+function CrearSelector(id) {  
+    const section = document.createElement('section');  // Creamos un nuevo section y un div
+    const div = document.createElement('div');  
+    div.id = id;  // Le añadimos un id al nuevo div (usamos el argumento id)
+    section.appendChild(div);  // Introducimos el div --> section --> body
+    document.body.appendChild(section);  
+}
 
-const newSection2 = document.createElement('section');  // creacion de un nuevo section y su etiqueta id
-newSection2.id = 'contenedor'
-
-const newDiv2 = document.createElement('div');  // Nueno elemento div
-const newH22 = document.createElement('h2');  // Nuevo elemento h2
-newH22.textContent = 'Recomendados';
-
-document.body.appendChild(newH22);  // creacion de un nuevo h2 con texto
-
+//  Arrays
 
 const imagenes = [  // Array para introducir imagenes
     'viajes/viajes-1.jpg', 
@@ -38,59 +40,64 @@ const parrafos = [  // Array para introducir los parrafos
     'Tomando el sol',
     'Aquí también puedes tomar el sol',
     'Y aquí, más de lo mismo'
-]
+];
 
 const titulos = [  // Array para introducir los h2
     'Viaje 1',
     'Viaje 2',
     'Viaje 3'
-]
+];
 
+// A partir de aquí, comienza la modificacion
+
+crearTitulo(1); // Titulo Bienvenidos
+    const newTittle1 = document.getElementById('titulo-1');
+    newTittle1.textContent = 'Bienvenidos';
+
+crearSection(1); // Imagen BANNER
+    const newImg1 = document.getElementById('img-1')
+    newImg1.src = "banner/1.jpg";
+
+crearTitulo(2); // Titulo Recomendados
+    const newTittle2 = document.getElementById('titulo-2');
+    newTittle2.textContent = 'Bienvenidos';
+
+const newSection2 = document.createElement('section');  // creacion de un nuevo section y su etiqueta id
+newSection2.id = 'contenedor'
 
 for (let i = 0; i < 3; i++) {  // Bucle for que ocurre 3 veces
 
-    const newDiv2 = document.createElement('div');  // Variables de creacion de div, img, p y h3
-    const newImg2 = document.createElement('img');
-    const newP2 = document.createElement('p');
-    const newh3 = document.createElement('h3');
+    const div = document.createElement('div');  // Variables de creacion de div, img, p y h3
+    const img = document.createElement('img');
+    const p = document.createElement('p');
+    const h3 = document.createElement('h3');
 
-    newh3.innerText = titulos[i];  // Introduccion de los textos e imagenes de los arrays en cada posicion de i
-    newP2.innerText = parrafos[i];
-    newImg2.src = imagenes[i];
+    h3.innerText = titulos[i];  // Introduccion de los textos e imagenes de los arrays en cada posicion de i
+    p.innerText = parrafos[i];
+    img.src = imagenes[i];
 
-    newDiv2.appendChild(newImg2); // Introduce una nueva imagen dentro del div
-    newDiv2.appendChild(newh3);  // Introduce un h3 dentro del div
-    newDiv2.appendChild(newP2);  // Introduce un p dentro del div
+    div.appendChild(img); // Introduce una nueva imagen --> div
+    div.appendChild(h3);  // Introduce un h3 --> div
+    div.appendChild(p);  // Introduce un p --> del div
     
 
-    newDiv2.id = `div-${i+1}`;  // Añade un id al div creado
-    newImg2.id = `img-${i+1}`;  // Añade un id a la imagen
+    div.id = `div-${i+1}`;  // Añade un id al div creado
+    img.id = `img-${i+1}`;  // Añade un id a la imagen
 
-    newSection2.appendChild(newDiv2); // Introduce el div creado dentro de la section2, y vuelta a empezar
-    
+    newSection2.appendChild(div); // Introduce el div creado dentro de la section2, y vuelta a empezar
+    document.body.appendChild(newSection2); // Introduce el section creado despues del bucle dentro del body
 }
 
-document.body.appendChild(newSection2); // Introduce el section creado despues del bucle dentro del body
+crearTitulo(3); // Titulo Destinos
+    const newTittle3 = document.getElementById('titulo-3');
+    newTittle3.innerText = 'Destinos';
 
+CrearSelector('contenedor-selector');  // Llamada a la funcion crearSelector
 
-// Creacion del desplegable destinos
-
-const newh23 = document.createElement('h2');
-newh23.innerText = ('Destinos');
-
-document.body.appendChild(newh23);
-
-const newSection3 = document.createElement('section');  // Creamos un nuevo section
-const newDiv3 = document.createElement('div');  // Creamos un nuevo div
-newDiv3.id = 'contenedor-selector';  // Le añadimos un id al nuevo div
-newSection3.appendChild(newDiv3);  // Introducimos el div dentro del section
-
-document.body.appendChild(newSection3);  // Introducimos el section en el body
+const destinos = ['Playa', 'Ciudad', 'Montaña'];  // Array de la lista de seleccion
 
 const selection = document.createElement('select');  // Creacion de elemento select con id
 selection.id = ('desplegable');
-
-const destinos = ['Playa', 'Ciudad', 'Montaña'];  // Array de la lista de seleccion
 
 for (let i = 0; i < destinos.length; i++) {  
     const opcion = document.createElement('option');  // Creamos el elemento option
